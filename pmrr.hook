@@ -1,0 +1,8 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Targets=amd-ucode
+Targets=intel-ucode
+Targets=linux*
