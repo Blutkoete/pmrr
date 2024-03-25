@@ -1,0 +1,21 @@
+#!/bin/sh
+PMRR_CONFIG_FILE_PATH="/etc/pmrr.conf"
+PMRR_HOOK_OUTPUT_PATH="/etc/pacman.d/hooks/pmrr.hook"
+
+PMRR_TEMP_HOOK=`mktemp`
+
+# Create base hook
+echo "[Trigger]" > ${PMRR_TEMP_HOOK}
+echo "Operation=Install" >> ${PMRR_TEMP_HOOK}
+echo "Operation=Upgrade" >> ${PMRR_TEMP_HOOK}
+echo "Operation=Remove" >> ${PMRR_TEMP_HOOK}
+echo "Type=Package" >> ${PMRR_TEMP_HOOK}
+
+# Add TARGETS from config
+while read -r line
+do
+    echo "Targets=${line}" >> ${PMRR_TEMP_HOOK}
+done < ${PMRR_CONFIG_FILE_PATH}
+
+mv "${PMRR_TEMP_HOOK}" "${PMRR_HOOK_OUTPUT_PATH}"
+chmod 644 "${PMRR_HOOK_OUTPUT_PATH}"

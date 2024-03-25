@@ -1,0 +1,7 @@
+[Unit]
+Description=Remove the reboot-required file from /var/run/ if present
+[Service]
+Type=simple
+ExecStart=/bin/sh /usr/bin/remove-reboot-required
+[Install]
+WantedBy=multi-user.target
