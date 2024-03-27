@@ -14,7 +14,7 @@ echo "Type=Package" >> ${PMRR_TEMP_HOOK}
 # Add TARGETS from config
 while read -r line
 do
-    echo "Targets=${line}" >> ${PMRR_TEMP_HOOK}
+    echo "Target=${line}" >> ${PMRR_TEMP_HOOK}
 done < ${PMRR_CONFIG_FILE_PATH}
 
 mv "${PMRR_TEMP_HOOK}" "${PMRR_HOOK_OUTPUT_PATH}"
