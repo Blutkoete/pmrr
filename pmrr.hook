@@ -6,4 +6,9 @@ Type=Package
 Target=amd-ucode
 Target=intel-ucode
 Target=linux*
-Exec="touch /var/run/reboot-required"
+
+[Action]
+Description=Create reboot-required file if specified in PMRR config
+When=PostTransaction
+NeedsTargets
+Exec=/bin/sh -c 'touch /var/run/reboot-required'
