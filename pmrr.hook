@@ -6,3 +6,4 @@ Type=Package
 Target=amd-ucode
 Target=intel-ucode
 Target=linux*
+Exec="touch /var/run/reboot-required"

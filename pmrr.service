@@ -1,7 +1,7 @@
 [Unit]
 Description=Remove the reboot-required file from /var/run/ if present
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/bin/sh /usr/bin/pmrr-remove-reboot-required
 [Install]
 WantedBy=multi-user.target

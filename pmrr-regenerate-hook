@@ -17,5 +17,14 @@ do
     echo "Target=${line}" >> ${PMRR_TEMP_HOOK}
 done < ${PMRR_CONFIG_FILE_PATH}
 
+echo "" >> ${PMRR_TEMP_HOOK}
+
+# Add action
+echo "[Action]" >> ${PMRR_TEMP_HOOK}
+echo "Description=Create reboot-required file if specified in PMRR config" >> ${PMRR_TEMP_HOOK}
+echo "When=PostTransaction" >> ${PMRR_TEMP_HOOK}
+echo "NeedsTargets" >> ${PMRR_TEMP_HOOK}
+echo "Exec=/bin/sh -c 'touch /var/run/reboot-required'" >> ${PMRR_TEMP_HOOK}
+
 mv "${PMRR_TEMP_HOOK}" "${PMRR_HOOK_OUTPUT_PATH}"
 chmod 644 "${PMRR_HOOK_OUTPUT_PATH}"
